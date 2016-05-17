@@ -1,0 +1,4 @@
+prototype(Ttree.Neos.Tone:LanguageStyleSummary) >
+prototype(Ttree.Neos.Tone:LanguageStyleSummary) < prototype(TypoScript:Template) {
+    templatePath = 'resource://Ttree.Neos.Tone/Private/Templates/RawContentMode/TypoScriptObjects/LanguageStyleSummary.html'
+}

@@ -1,0 +1,35 @@
+prototype(Ttree.Neos.Tone:TonePreview) >
+prototype(Ttree.Neos.Tone:TonePreview) < prototype(TYPO3.TypoScript:Template) {
+    templatePath = 'resource://Ttree.Neos.Tone/Private/Templates/RawContentMode/TypoScriptObjects/GeneralContentCollectionRendering.html'
+
+    columns = TYPO3.TypoScript:Collection {
+        collection = ${q(node).children('[instanceof TYPO3.Neos:ContentCollection]')}
+        itemName = 'node'
+            itemRenderer = TYPO3.TypoScript:Template {
+            templatePath = 'resource://Ttree.Neos.Tone/Private/Templates/RawContentMode/TypoScriptObjects/ContentCollectionTemplate.html'
+            node = ${node}
+            attributes = TYPO3.TypoScript:Attributes {
+                class = 'column'
+            }
+            columnContent = TYPO3.Neos:ContentCollection {
+                nodePath = '.'
+            }
+
+            analysis = Ttree.Neos.Tone:ToneAnalyzer
+            @context.analysis = ${this.analysis}
+
+            emotion = Ttree.Neos.Tone:Emotion {
+                data = ${Json.parse(analysis).document_tone.tone_categories[0].tones}
+                @if.hasData = ${analysis != null}
+            }
+            languageStyleSummary = Ttree.Neos.Tone:LanguageStyleSummary {
+                data = ${Json.parse(analysis).document_tone.tone_categories[1].tones}
+                @if.hasData = ${analysis != null}
+            }
+            socialSummary = Ttree.Neos.Tone:SocialSummary {
+                data = ${Json.parse(analysis).document_tone.tone_categories[2].tones}
+                @if.hasData = ${analysis != null}
+            }
+        }
+    }
+}

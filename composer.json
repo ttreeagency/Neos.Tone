@@ -1,0 +1,28 @@
+{
+    "name": "ttree/neos-tone",
+    "description": "Use the power of machine learning during content creation in your Neos CMS project based on IBM Watson Tone Analysis (beta)",
+    "type": "neos-package",
+    "license": "MIT",
+    "keywords": [
+        "flow",
+        "tone",
+        "machinelearning",
+        "ibm",
+        "bluemix"
+    ],
+    "require": {
+        "typo3/neos": "^2.2",
+        "ttree/watson": "^0.1",
+        "html2text/html2text": "^2.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ttree\\Neos\\Tone\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Ttree.Neos.Tone"
+        }
+    }
+}

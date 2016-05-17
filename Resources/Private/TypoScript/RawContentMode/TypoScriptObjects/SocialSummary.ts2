@@ -1,0 +1,4 @@
+prototype(Ttree.Neos.Tone:SocialSummary) >
+prototype(Ttree.Neos.Tone:SocialSummary) < prototype(TypoScript:Template) {
+    templatePath = 'resource://Ttree.Neos.Tone/Private/Templates/RawContentMode/TypoScriptObjects/SocialSummary.html'
+}

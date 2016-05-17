@@ -1,0 +1,46 @@
+.ttree-neos-tone-summaryview {
+
+}
+
+.ttree-neos-tone-columnview-hero {
+    padding-bottom: 1em !important;
+    margin-bottom: 1em !important;
+    border-bottom: 1px dotted #3f3f3f;
+    overflow: hidden;
+}
+
+.ttree-neos-tone-columnview-hero__label {
+    float: left;
+}
+
+.ttree-neos-tone-columnview-hero__value {
+    font-weight: bold;
+    float: right;
+}
+
+.ttree-neos-tone-columnview-column {
+    margin-bottom: .8em !important;
+}
+
+.ttree-neos-tone-columnview-column__label {
+    font-weight: bold;
+}
+
+.ttree-neos-tone-columnview-column__value {
+    font-weight: normal;
+    font-size: 80%;
+    float: right;
+}
+
+.ttree-neos-tone-columnview-column__bar {
+    margin-top: .4em !important;
+    height: 8px;
+    width: 100%;
+    background-color: #3f3f3f;
+    overflow: hidden;
+}
+
+.ttree-neos-tone-columnview-column__cursor {
+    height: 8px;
+    background-color: #00a338
+}

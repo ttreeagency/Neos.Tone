@@ -1,0 +1,5 @@
+'TYPO3.Neos:Content':
+  superTypes:
+    'Ttree.Neos.Tone:ContentEmotionSummaryMixin': TRUE
+    'Ttree.Neos.Tone:ContentLanguageSummaryMixin': TRUE
+    'Ttree.Neos.Tone:ContentSocialSummaryMixin': TRUE

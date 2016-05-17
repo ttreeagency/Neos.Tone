@@ -1,0 +1,4 @@
+prototype(Ttree.Neos.Tone:Emotion) >
+prototype(Ttree.Neos.Tone:Emotion) < prototype(TypoScript:Template) {
+    templatePath = 'resource://Ttree.Neos.Tone/Private/Templates/RawContentMode/TypoScriptObjects/Emotion.html'
+}

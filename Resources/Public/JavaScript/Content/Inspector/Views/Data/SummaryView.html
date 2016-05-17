@@ -1,0 +1,16 @@
+<div {{bindAttr class="view._columnsClass"}}>
+	{{#if view._heroValue}}
+		<div class="ttree-neos-tone-columnview-hero">
+			<div class="ttree-neos-tone-columnview-hero__label">{{view._heroValue.label}}</div>
+			<div class="ttree-neos-tone-columnview-hero__value">{{view._heroValue.value}}</div>
+		</div>
+	{{/if}}
+	{{#each view._columnValues}}
+		<div class="ttree-neos-tone-columnview-column">
+			<div class="ttree-neos-tone-columnview-column__label">{{label}} <span class="ttree-neos-tone-columnview-column__value">{{value}}</span></div>
+			<div class="ttree-neos-tone-columnview-column__bar">
+				<div class="ttree-neos-tone-columnview-column__cursor" style="width: {{unbound width}};"></div>
+			</div>
+		</div>
+	{{/each}}
+</div>

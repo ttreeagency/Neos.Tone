@@ -1,0 +1,33 @@
+Ttree:
+  Neos:
+    Tone:
+      api:
+        username: ''
+        password: ''
+
+TYPO3:
+  Neos:
+    typoScript:
+      autoInclude:
+        'Ttree.Neos.Tone': TRUE
+
+    userInterface:
+
+      translation:
+        autoInclude:
+          'Ttree.Neos.Tone': ['Main', 'NodeTypes/*']
+
+      requireJsPathMapping:
+        'Ttree.Neos.Tone/Inspector/Views': 'resource://Ttree.Neos.Tone/Public/JavaScript/Content/Inspector/Views/'
+
+      editPreviewModes:
+        tone:
+          isEditingMode: FALSE
+          isPreviewMode: TRUE
+          typoScriptRenderingPath: 'tone'
+          title: 'Ttree.Neos.Tone:Main:editPreviewModes.tone'
+          position: 10
+
+  TypoScript:
+    defaultContext:
+      Tone: 'Ttree\Neos\Tone\Eel\Helper\ToneHelper'

@@ -1,0 +1,37 @@
+{namespace t=Ttree\Neos\Tone\ViewHelpers}
+<div class="summary--emotion">
+    <h5 class="base--h5">Emotion (probability score)</h5>
+    <div class="summary-emotion-graph bar-graph">
+
+        <f:for each="{data}" as="emotion">
+            <div class="bar-graph--row">
+                <div class="bar-graph--label-container summary-emotion-graph--label-container">
+                    <div class="bar-graph--label">
+                        <p class="base--p">
+                            {emotion.tone_name}
+                        </p>
+                    </div>
+                </div>
+                <div class="bar-graph--bar-container summary-emotion-graph--bar-container">
+                    <div class="bar-graph--bar">
+                        <div class="bar-graph--bar-value summary-emotion-graph--bar-value summary-emotion-graph--bar-value_{emotion.tone_name}" style="width: {emotion.score -> t:format.percentage()};"></div>
+                        <div class="summary-emotion-graph--bar-tooltip summary-emotion-graph--bar-tooltip_{emotion.tone_name} bar-graph--bar-tooltip" style="margin-left: {emotion.score -> t:format.percentage()};">
+                            {emotion.score -> f:format.number(forceLocale: true)}
+                        </div>
+
+                        <div class="bar-graph--threshold" style="left: 50.0%"></div>
+
+
+                        <div class="bar-graph--threshold" style="left: 75.0%"></div>
+
+                    </div>
+                </div>
+            </div>
+        </f:for>
+
+        <div class="summary-emotion-graph--legend-label-container">
+            <div class="summary-emotion-graph--legend-label summary-emotion-graph--legend-label_medium">Medium</div>
+            <div class="summary-emotion-graph--legend-label summary-emotion-graph--legend-label_high">High</div>
+        </div>
+    </div>
+</div>

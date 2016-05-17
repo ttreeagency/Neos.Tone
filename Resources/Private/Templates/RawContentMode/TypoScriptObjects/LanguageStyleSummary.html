@@ -1,0 +1,21 @@
+{namespace t=Ttree\Neos\Tone\ViewHelpers}
+<div class="summary--writing">
+    <h5 class="base--h5">Language Style summary (raw score)</h5>
+    <div class="summary-writing-graph">
+
+        <f:for each="{data}" as="emotion">
+            <div class="summary-writing-graph--column">
+                <div class="summary-writing-graph--bar">
+                    <div class="summary-writing-graph--bar-value" style="height: {emotion.score -> t:format.percentage()};"></div>
+                    <div class="summary-writing-graph--bar-tooltip summary-writing-graph--bar-tooltip_{emotion.tone_name} bar-graph--bar-tooltip" style="margin-bottom: {emotion.score -> t:format.percentage()};">
+                        {emotion.score -> f:format.number(forceLocale: true)}
+                    </div>
+                </div>
+                <div class="summary-writing-graph--label">
+                    {emotion.tone_name}
+                </div>
+            </div>
+        </f:for>
+
+    </div>
+</div>

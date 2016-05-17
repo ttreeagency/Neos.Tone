@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Ttree.Neos.Tone:ContentEmotionSummaryMixin" source-language="en" datatype="plaintext">
+        <body>
+            <trans-unit id="views.toneEmotion" xml:space="preserve">
+				<source>Emotion</source>
+			</trans-unit>
+        </body>
+    </file>
+</xliff>

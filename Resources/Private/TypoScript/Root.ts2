@@ -1,0 +1,46 @@
+namespace: Tone=Ttree.Neos.Tone
+namespace: TypoScript=TYPO3.TypoScript
+
+include: Prototypes/**/*
+include: RawContentMode/**/*
+
+prototype(TYPO3.Neos:Page) {
+    head {
+        stylesheets {
+            tone = TypoScript:Tag {
+                tagName = 'link'
+                selfClosingTag = TRUE
+                attributes {
+                    rel = 'stylesheet'
+                    media = 'all'
+                    href = TypoScript:ResourceUri {
+                        path = 'resource://Ttree.Neos.Tone/Public/Styles/Backend.css'
+                    }
+                }
+
+                @position = 'end'
+            }
+        }
+    }
+}
+
+tone = TYPO3.Neos:Page {
+    head {
+        stylesheets = TYPO3.TypoScript:Template {
+            templatePath = 'resource://Ttree.Neos.Tone/Private/Templates/RawContentMode/Page/Default.html'
+            sectionName = 'headerIncludes'
+        }
+    }
+
+    bodyTag.attributes.class = 'neos-raw-content-mode'
+
+    body {
+        templatePath = 'resource://Ttree.Neos.Tone/Private/Templates/RawContentMode/Page/Default.html'
+        sectionName = 'body'
+
+        allContentCollections = TYPO3.Neos:PrimaryContent {
+            nodePath = '.'
+            default.renderer = Ttree.Neos.Tone:TonePreview
+        }
+    }
+}

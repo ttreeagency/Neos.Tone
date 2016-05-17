@@ -1,0 +1,112 @@
+'Ttree.Neos.Tone:ContentSummaryMixin':
+  abstract: TRUE
+  ui:
+    inspector:
+      groups:
+        toneAnalysis:
+          label: i18n
+          tab: 'default'
+          icon: 'icon-exchange'
+          position: 1
+
+'Ttree.Neos.Tone:ContentEmotionSummaryMixin':
+  abstract: TRUE
+  superTypes:
+    'Ttree.Neos.Tone:ContentSummaryMixin': TRUE
+  ui:
+    inspector:
+      views:
+        toneEmotion:
+          label: i18n
+          group: 'toneAnalysis'
+          position: 10
+          view: 'Ttree.Neos.Tone/Inspector/Views/Data/SummaryView'
+          viewOptions:
+            dataSource: 'ToneAnalysis'
+            arguments:
+              type: 'emotion'
+            hero:
+              data: 'resume.mainTone'
+              label: 'Major Tone'
+            columns:
+              -
+                data: 'tones.anger'
+                label: 'Anger'
+              -
+                data: 'tones.disgust'
+                label: 'Disgust'
+              -
+                data: 'tones.fear'
+                label: 'Fear'
+              -
+                data: 'tones.sadness'
+                label: 'Sadness'
+              -
+                data: 'tones.joy'
+                label: 'Joy'
+
+'Ttree.Neos.Tone:ContentLanguageSummaryMixin':
+  abstract: TRUE
+  superTypes:
+    'Ttree.Neos.Tone:ContentSummaryMixin': TRUE
+  ui:
+    inspector:
+      views:
+        toneLanguage:
+          label: i18n
+          group: 'toneAnalysis'
+          position: 20
+          view: 'Ttree.Neos.Tone/Inspector/Views/Data/SummaryView'
+          viewOptions:
+            dataSource: 'ToneAnalysis'
+            arguments:
+              type: 'language'
+            hero:
+              data: 'resume.mainTone'
+              label: 'Major Tone'
+            columns:
+              -
+                data: 'tones.analytical'
+                label: 'Analytical'
+              -
+                data: 'tones.confident'
+                label: 'Confident'
+              -
+                data: 'tones.tentative'
+                label: 'Tentative'
+
+'Ttree.Neos.Tone:ContentSocialSummaryMixin':
+  abstract: TRUE
+  superTypes:
+    'Ttree.Neos.Tone:ContentSummaryMixin': TRUE
+  ui:
+    inspector:
+      views:
+        toneSocial:
+          label: i18n
+          group: 'toneAnalysis'
+          position: 30
+          view: 'Ttree.Neos.Tone/Inspector/Views/Data/SummaryView'
+          viewOptions:
+            dataSource: 'ToneAnalysis'
+            arguments:
+              type: 'social'
+            hero:
+              data: 'resume.mainTone'
+              label: 'Major Tone'
+            columns:
+              -
+                data: 'tones.agreeableness_big5'
+                label: 'Agreeableness'
+              -
+                data: 'tones.conscientiousness_big5'
+                label: 'Conscientiousness'
+              -
+                data: 'tones.extraversion_big5'
+                label: 'Extraversion'
+              -
+                data: 'tones.neuroticism_big5'
+                label: 'Neuroticism'
+              -
+                data: 'tones.openness_big5'
+                label: 'Openness'
