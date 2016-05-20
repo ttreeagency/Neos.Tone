@@ -4,20 +4,37 @@ namespace: TypoScript=TYPO3.TypoScript
 include: Prototypes/**/*
 include: RawContentMode/**/*
 
+prototype(Ttree.Neos.Tone:TonePreviewStyleSheet) < prototype(TypoScript:Tag) {
+    tagName = 'link'
+    selfClosingTag = TRUE
+    attributes {
+        rel = 'stylesheet'
+        media = 'all'
+        href = TypoScript:ResourceUri {
+            path = 'resource://Ttree.Neos.Tone/Public/Styles/Backend.css'
+        }
+    }
+}
+
 prototype(TYPO3.Neos:Page) {
     head {
         stylesheets {
-            tone = TypoScript:Tag {
-                tagName = 'link'
-                selfClosingTag = TRUE
-                attributes {
-                    rel = 'stylesheet'
-                    media = 'all'
-                    href = TypoScript:ResourceUri {
-                        path = 'resource://Ttree.Neos.Tone/Public/Styles/Backend.css'
-                    }
-                }
+            tone = Ttree.Neos.Tone:TonePreviewStyleSheet {
+                @position = 'end'
+            }
+        }
+    }
+}
 
+rawContent {
+    head {
+        stylesheets >
+        stylesheets {
+            default = TYPO3.TypoScript:Template {
+                templatePath = 'resource://TYPO3.Neos/Private/Templates/RawContentMode/Page/Default.html'
+                sectionName = 'headerIncludes'
+            }
+            tone = Ttree.Neos.Tone:TonePreviewStyleSheet {
                 @position = 'end'
             }
         }
