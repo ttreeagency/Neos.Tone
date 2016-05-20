@@ -1,5 +1,17 @@
-.ttree-neos-tone-summaryview {
+.ttree-neos-tone-summaryview__container {
 
+}
+
+.ttree-neos-tone-summaryview__summary {
+    padding-bottom: 1em !important;
+    margin-bottom: 1em !important;
+}
+
+.ttree-neos-tone-columnview-header {
+    padding-bottom: .5em !important;
+    margin-bottom: .5em !important;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 .ttree-neos-tone-columnview-hero {
@@ -7,6 +19,8 @@
     margin-bottom: 1em !important;
     border-bottom: 1px dotted #3f3f3f;
     overflow: hidden;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .ttree-neos-tone-columnview-hero__label {
@@ -42,5 +56,17 @@
 
 .ttree-neos-tone-columnview-column__cursor {
     height: 8px;
-    background-color: #00a338
+    background-color: #CCC;
+}
+
+.ttree-neos-tone-columnview-column__cursor--high {
+    background-color: #00ab34;
+}
+
+.ttree-neos-tone-columnview-column__cursor--medium {
+    background-color: #007404;
+}
+
+.ttree-neos-tone-columnview-column__cursor--low {
+    background-color: #005204;
 }

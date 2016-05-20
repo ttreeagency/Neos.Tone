@@ -2,8 +2,11 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file original="" product-name="Ttree.Neos.Tone:ContentSummaryMixin" source-language="en" datatype="plaintext">
         <body>
-            <trans-unit id="groups.toneAnalysis" xml:space="preserve">
-				<source>Tone Analysis</source>
+            <trans-unit id="groups.toneAnalyzer" xml:space="preserve">
+				<source>Tone Analyzer</source>
+			</trans-unit>
+            <trans-unit id="views.toneSummary" xml:space="preserve">
+				<source>Summary</source>
 			</trans-unit>
         </body>
     </file>

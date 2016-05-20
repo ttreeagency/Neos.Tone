@@ -1,0 +1,4 @@
+'TYPO3.Neos:Document':
+  ui:
+    editPreviewModes:
+      'Ttree.Neos.Tone:tone': TRUE

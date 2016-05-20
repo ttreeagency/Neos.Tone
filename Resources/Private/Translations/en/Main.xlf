@@ -5,6 +5,54 @@
             <trans-unit id="editPreviewModes.tone" xml:space="preserve">
 				<source>Tone Analyzer</source>
 			</trans-unit>
+            <trans-unit id="summary.emotion" xml:space="preserve">
+				<source>Emotion</source>
+			</trans-unit>
+            <trans-unit id="summary.language" xml:space="preserve">
+				<source>Language Style summary</source>
+			</trans-unit>
+            <trans-unit id="summary.social" xml:space="preserve">
+				<source>Social summary</source>
+			</trans-unit>
+            <trans-unit id="tone.anger" xml:space="preserve">
+				<source>Anger</source>
+			</trans-unit>
+            <trans-unit id="tone.disgust" xml:space="preserve">
+				<source>Disgust</source>
+			</trans-unit>
+            <trans-unit id="tone.fear" xml:space="preserve">
+				<source>Fear</source>
+			</trans-unit>
+            <trans-unit id="tone.joy" xml:space="preserve">
+				<source>Joy</source>
+			</trans-unit>
+            <trans-unit id="tone.sadness" xml:space="preserve">
+				<source>Sadness</source>
+			</trans-unit>
+            <trans-unit id="tone.analytical" xml:space="preserve">
+				<source>Analytical</source>
+			</trans-unit>
+            <trans-unit id="tone.confident" xml:space="preserve">
+				<source>Confident</source>
+			</trans-unit>
+            <trans-unit id="tone.tentative" xml:space="preserve">
+				<source>Tentative</source>
+			</trans-unit>
+            <trans-unit id="tone.openness_big5" xml:space="preserve">
+				<source>Openness</source>
+			</trans-unit>
+            <trans-unit id="tone.conscientiousness_big5" xml:space="preserve">
+				<source>Conscientiousness</source>
+			</trans-unit>
+            <trans-unit id="tone.extraversion_big5" xml:space="preserve">
+				<source>Extraversion</source>
+			</trans-unit>
+            <trans-unit id="tone.agreeableness_big5" xml:space="preserve">
+				<source>Agreeableness</source>
+			</trans-unit>
+            <trans-unit id="tone.neuroticism_big5" xml:space="preserve">
+				<source>Emotional Range</source>
+			</trans-unit>
         </body>
     </file>
 </xliff>

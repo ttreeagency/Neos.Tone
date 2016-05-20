@@ -21,7 +21,7 @@ TYPO3:
         'Ttree.Neos.Tone/Inspector/Views': 'resource://Ttree.Neos.Tone/Public/JavaScript/Content/Inspector/Views/'
 
       editPreviewModes:
-        tone:
+        'Ttree.Neos.Tone:tone':
           isEditingMode: FALSE
           isPreviewMode: TRUE
           typoScriptRenderingPath: 'tone'

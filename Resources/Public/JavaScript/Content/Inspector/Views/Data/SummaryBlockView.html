@@ -1,0 +1,16 @@
+<div class="ttree-neos-tone-columnview-header">
+	{{view.label}}
+</div>
+{{#if view.mainTone}}
+<div class="ttree-neos-tone-columnview-hero">
+	<span class="ttree-neos-tone-columnview-hero__label">{{view.mainTone}}</span>
+</div>
+{{/if}}
+{{#each view.tones}}
+<div class="ttree-neos-tone-columnview-column">
+	<div class="ttree-neos-tone-columnview-column__label">{{label}} <span class="ttree-neos-tone-columnview-column__value">{{value}}</span></div>
+	<div class="ttree-neos-tone-columnview-column__bar">
+		<div {{bindAttr class="classBinding"}} {{bindAttr style="styleBinding"}}></div>
+	</div>
+</div>
+{{/each}}

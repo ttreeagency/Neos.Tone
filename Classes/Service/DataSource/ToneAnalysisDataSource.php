@@ -40,54 +40,50 @@ class ToneAnalysisDataSource extends AbstractDataSource
      */
     public function getData(NodeInterface $node = null, array $arguments)
     {
-        if (!isset($arguments['type'])) {
-            throw new \InvalidArgumentException('Missing "type" argument', 1463406597);
-        }
         if (!isset($arguments['typoscriptPath'])) {
             throw new \InvalidArgumentException('Missing "typoscriptPath" argument', 1463406598);
         }
+        
         $typoscriptPath = rtrim(explode('__meta', $arguments['typoscriptPath'])[0], '/');
-
-        $view = new TypoScriptView();
-        $view->setControllerContext($this->controllerContext);
-        $view->assign('value', $node);
-        $view->setTypoScriptPath($typoscriptPath);
-        $content = $view->render();
+        $content = $this->renderContent($node, $typoscriptPath);
         $result = $this->toneService->analyze($content);
 
         $toneCategories = $result['document_tone']['tone_categories'];
-        switch ($arguments['type']) {
-            case 'emotion':
-                $data = $this->getAnalysis($toneCategories[0]);
-                break;
-            case 'language':
-                $data = $this->getAnalysis($toneCategories[1]);
-                break;
-            case 'social':
-                $data = $this->getAnalysis($toneCategories[2]);
-                break;
-            default:
-                return [
-                    'error' => [
-                        'message' => 'Invalid type'
-                    ]
-                ];
-        }
 
         return [
-            'data' => $data,
-            'arguments' => $arguments
+            'data' => [
+                $this->getAnalysis($toneCategories[0], 'emotion'),
+                $this->getAnalysis($toneCategories[1], 'language'),
+                $this->getAnalysis($toneCategories[2], 'social')
+            ]
         ];
     }
 
     /**
+     * @param NodeInterface $node
+     * @param string $typoscriptPath
+     * @return string
+     * @throws \Exception
+     */
+    protected function renderContent(NodeInterface $node, $typoscriptPath)
+    {
+        $view = new TypoScriptView();
+        $view->setControllerContext($this->controllerContext);
+        $view->assign('value', $node);
+        $view->setTypoScriptPath($typoscriptPath);
+        return $view->render();
+    }
+
+    /**
      * @param array $data
+     * @param string $label
      * @return array
      */
-    protected function getAnalysis(array $data)
+    protected function getAnalysis(array $data, $label)
     {
         $tones = $this->mapTones($data['tones']);
         return $stats = [
+            'label' => 'summary.' . $label,
             'resume' => [
                 'mainTone' => $this->getMainToneLabel($tones)
             ],
@@ -103,9 +99,12 @@ class ToneAnalysisDataSource extends AbstractDataSource
     {
         $tones = [];
         foreach ($data as $tone) {
-            $tones[$tone['tone_id']] = number_format($tone['score'], 3);
+            $tones[$tone['tone_id']] = [
+                'label' => 'tone.' . $tone['tone_id'],
+                'value' => number_format($tone['score'], 3)
+            ];
         }
-        return $tones;
+        return array_values($tones);
     }
 
     /**
@@ -114,10 +113,8 @@ class ToneAnalysisDataSource extends AbstractDataSource
      */
     protected function getMainToneLabel(array $tones)
     {
-        natsort($tones);
         $tones = array_reverse($tones);
-        $toneLabels = array_keys($tones);
-        return ucfirst(explode('_', reset($toneLabels))[0]);
+        return reset($tones)['label'];
 
     }
 }

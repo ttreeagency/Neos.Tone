@@ -6,6 +6,7 @@ define(
     'Content/Inspector/Views/Widget',
     'Content/Inspector/Views/Data/DataSourceLoader',
     'Shared/HttpClient',
+    './SummaryBlockView',
     'text!./SummaryView.html'
   ],
   function ($,
@@ -14,20 +15,18 @@ define(
             Widget,
             DataSourceLoader,
             HttpClient,
+            SummaryBlockView,
             template) {
     /**
-     * Widget that displays data in columns with an optional large hero column
+     * Widget that displays tone analysis summary
      */
     return Widget.extend(DataSourceLoader, {
       template: Ember.Handlebars.compile(template),
 
-      classNames: ['ttree-neos-tone-summaryview'],
-      classNameBindings: ['_columnsClass'],
+      classNames: ['ttree-neos-tone-summaryview__container'],
 
       // Column definitions
-      columns: null,
-      // Single, large hero definition
-      hero: null,
+      blocks: null,
 
       // Load data from the data source
       _loadData: function() {
@@ -54,38 +53,17 @@ define(
         );
       }.on('init'),
 
-      _columnValues: function () {
-        var columnValues = [],
-          data = this.get('data'),
-          columns = this.get('columns');
-        if (!data) {
-          return [];
-        }
-        $.each(columns, function () {
-          columnValues.push($.extend({
-            value: Ember.get(data, this.data),
-            width: Ember.get(data, this.data) * 100 + '%'
-          }, this));
+      blockView: function () {
+        return Ember.CollectionView.extend({
+          classNames: ['ttree-neos-tone-summaryview__wrapper'],
+          content: this.get('data'),
+          itemViewClass: SummaryBlockView,
+          emptyView: Ember.View.extend({
+            template: Ember.Handlebars.compile('{{view._parentView._parentView._loadingLabel}}'),
+            tagName: 'span',
+            classNames: ['neos-inspector-file-loading']
+          })
         });
-        return columnValues;
-      }.property('columns', 'data'),
-
-      _heroValue: function () {
-        var data = this.get('data'),
-          hero = this.get('hero');
-        if (data && hero) {
-          return {
-            label: hero.label,
-            value: Ember.get(data, hero.data)
-          };
-        } else {
-          return null;
-        }
-      }.property('hero', 'data'),
-
-      _columnsClass: function () {
-        var columns = this.get('columns');
-        return columns && columns.length ? 'ttree-neos-tone-columnview-columns-' + columns.length : '';
-      }.property('columns')
+      }.property('blocks', 'data')
     });
   });
