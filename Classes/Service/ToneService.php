@@ -15,6 +15,8 @@ use GuzzleHttp\Exception\ConnectException;
 use Html2Text\Html2Text;
 use Ttree\Watson\Tone\Client;
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Cache\Frontend\StringFrontend;
+use TYPO3\Flow\Log\SystemLoggerInterface;
 
 /**
  * Tone Analysis Service
@@ -25,10 +27,22 @@ use TYPO3\Flow\Annotations as Flow;
 class ToneService
 {
     /**
-     * @Flow\InjectConfiguration(path="api")
      * @var array
+     * @Flow\InjectConfiguration(path="api")
      */
     protected $configuration;
+
+    /**
+     * @var SystemLoggerInterface
+     * @Flow\Inject
+     */
+    protected $logger;
+
+    /**
+     * @var StringFrontend
+     * @Flow\Inject
+     */
+    protected $cache;
 
     /**
      * @param string $value
@@ -42,9 +56,17 @@ class ToneService
             if (trim($text) === '') {
                 return null;
             }
-            $client = new Client($this->configuration['username'], $this->configuration['password']);
-            return json_decode($client->analyze($text), true);
+            $cacheKey = md5(__CLASS__ . __METHOD__ . $text);
+            if ($this->cache->has($cacheKey)) {
+                $response = $this->cache->get($cacheKey);
+            } else {
+                $client = new Client($this->configuration['username'], $this->configuration['password']);
+                $response = $client->analyze($text);
+                $this->cache->set($cacheKey, $response);
+            }
+            return json_decode($response, true);
         } catch (ConnectException $exception) {
+            $this->logger->logException($exception);
             return null;
         }
     }

@@ -1,0 +1,9 @@
+Ttree\Neos\Tone\Service\ToneService:
+  properties:
+    cache:
+      object:
+        factoryObjectName: TYPO3\Flow\Cache\CacheManager
+        factoryMethodName: getCache
+        arguments:
+          1:
+            value: Ttree_Neos_Tone_Watson_Response
