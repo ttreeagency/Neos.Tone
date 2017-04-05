@@ -12,10 +12,10 @@ namespace Ttree\Neos\Tone\Service\DataSource;
  */
 
 use Ttree\Neos\Tone\Service\ToneService;
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Neos\Service\DataSource\AbstractDataSource;
-use TYPO3\Neos\View\TypoScriptView;
-use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
+use Neos\Flow\Annotations as Flow;
+use Neos\Neos\Service\DataSource\AbstractDataSource;
+use Neos\Neos\View\FusionView;
+use Neos\ContentRepository\Domain\Model\NodeInterface;
 
 /**
  * Tone Analysis DataSource
@@ -67,10 +67,10 @@ class ToneAnalysisDataSource extends AbstractDataSource
      */
     protected function renderContent(NodeInterface $node, $typoscriptPath)
     {
-        $view = new TypoScriptView();
+        $view = new FusionView();
         $view->setControllerContext($this->controllerContext);
         $view->assign('value', $node);
-        $view->setTypoScriptPath($typoscriptPath);
+        $view->setFusionPath($typoscriptPath);
         return $view->render();
     }
 

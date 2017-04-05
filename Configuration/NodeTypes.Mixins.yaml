@@ -1,5 +1,5 @@
 'Ttree.Neos.Tone:ContentSummaryMixin':
-  abstract: TRUE
+  abstract: true
   ui:
     inspector:
       groups:
