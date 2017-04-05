@@ -1,5 +1,5 @@
 namespace: Tone=Ttree.Neos.Tone
-namespace: TypoScript=TYPO3.TypoScript
+namespace: TypoScript=Neos.Fusion
 
 include: Prototypes/**/*
 include: RawContentMode/**/*
@@ -16,7 +16,7 @@ prototype(Ttree.Neos.Tone:TonePreviewStyleSheet) < prototype(TypoScript:Tag) {
     }
 }
 
-prototype(TYPO3.Neos:Page) {
+prototype(Neos.Neos:Page) {
     head {
         stylesheets {
             tone = Ttree.Neos.Tone:TonePreviewStyleSheet {
@@ -30,8 +30,8 @@ rawContent {
     head {
         stylesheets >
         stylesheets {
-            default = TYPO3.TypoScript:Template {
-                templatePath = 'resource://TYPO3.Neos/Private/Templates/RawContentMode/Page/Default.html'
+            default = Neos.Fusion:Template {
+                templatePath = 'resource://Neos.Neos/Private/Templates/RawContentMode/Page/Default.html'
                 sectionName = 'headerIncludes'
             }
             tone = Ttree.Neos.Tone:TonePreviewStyleSheet {
@@ -41,9 +41,9 @@ rawContent {
     }
 }
 
-tone = TYPO3.Neos:Page {
+tone = Neos.Neos:Page {
     head {
-        stylesheets = TYPO3.TypoScript:Template {
+        stylesheets = Neos.Fusion:Template {
             templatePath = 'resource://Ttree.Neos.Tone/Private/Templates/RawContentMode/Page/Default.html'
             sectionName = 'headerIncludes'
         }
@@ -55,7 +55,7 @@ tone = TYPO3.Neos:Page {
         templatePath = 'resource://Ttree.Neos.Tone/Private/Templates/RawContentMode/Page/Default.html'
         sectionName = 'body'
 
-        allContentCollections = TYPO3.Neos:PrimaryContent {
+        allContentCollections = Neos.Neos:PrimaryContent {
             nodePath = '.'
             default.renderer = Ttree.Neos.Tone:TonePreview
         }

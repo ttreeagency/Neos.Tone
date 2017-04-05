@@ -14,9 +14,9 @@ namespace Ttree\Neos\Tone\Service;
 use GuzzleHttp\Exception\ConnectException;
 use Html2Text\Html2Text;
 use Ttree\Watson\Tone\Client;
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Cache\Frontend\StringFrontend;
-use TYPO3\Flow\Log\SystemLoggerInterface;
+use Neos\Flow\Annotations as Flow;
+use Neos\Cache\Frontend\StringFrontend;
+use Neos\Flow\Log\SystemLoggerInterface;
 
 /**
  * Tone Analysis Service

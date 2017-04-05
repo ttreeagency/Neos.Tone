@@ -1,5 +1,5 @@
 prototype(Ttree.Neos.Tone:ToneAnalyzer) >
-prototype(Ttree.Neos.Tone:ToneAnalyzer) < prototype(TYPO3.Neos:ContentCollection) {
+prototype(Ttree.Neos.Tone:ToneAnalyzer) < prototype(Neos.Neos:ContentCollection) {
     nodePath = '.'
     content.@process.appendRemovedContentForBackend >
     @process.contentElementWrapping >

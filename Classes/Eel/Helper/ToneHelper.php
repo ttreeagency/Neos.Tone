@@ -15,8 +15,8 @@ use GuzzleHttp\Exception\ConnectException;
 use Html2Text\Html2Text;
 use Ttree\Neos\Tone\Service\ToneService;
 use Ttree\Watson\Tone\Client;
-use TYPO3\Eel\ProtectedContextAwareInterface;
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Eel\ProtectedContextAwareInterface;
+use Neos\Flow\Annotations as Flow;
 
 /**
  * String helpers for Eel contexts
